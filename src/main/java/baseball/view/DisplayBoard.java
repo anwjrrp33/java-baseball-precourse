@@ -10,11 +10,15 @@ public class DisplayBoard {
     }
 
     public static void count(Count count) {
-        if(!count.isNothing()) {
+        if (!count.isNothing()) {
             resultCount(count);
             return;
         }
         System.out.println(DisplayBoardCode.NOTHING.getMessage());
+    }
+
+    public static void gameOver() {
+        System.out.println(DisplayBoardCode.GAMEOVER.getMessage());
     }
 
     private static void resultCount(Count count) {

@@ -28,6 +28,7 @@ public class NumberBaseBallGame {
 
     private boolean isGameOver(Count count) {
         if (count.getStrike() == 3) {
+            DisplayBoard.gameOver();
             return true;
         }
         return false;

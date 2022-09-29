@@ -8,7 +8,9 @@ public enum DisplayBoardCode {
 
     NOTHING("낫싱"),
 
-    INPUT("숫자를 입력해주세요 : ");
+    INPUT("숫자를 입력해주세요 : "),
+
+    GAMEOVER("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
     private String message;
 
