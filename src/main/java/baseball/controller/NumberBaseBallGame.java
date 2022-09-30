@@ -24,6 +24,7 @@ public class NumberBaseBallGame {
             DisplayBoard.count(count);
             isGameOver = isGameOver(count);
         }
+        DisplayBoard.playAgain();
     }
 
     private boolean isGameOver(Count count) {

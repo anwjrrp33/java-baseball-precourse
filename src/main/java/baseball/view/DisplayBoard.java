@@ -2,6 +2,7 @@ package baseball.view;
 
 import baseball.code.DisplayBoardCode;
 import baseball.model.Count;
+import camp.nextstep.edu.missionutils.Console;
 
 public class DisplayBoard {
 
@@ -19,6 +20,11 @@ public class DisplayBoard {
 
     public static void gameOver() {
         System.out.println(DisplayBoardCode.GAMEOVER.getMessage());
+    }
+
+    public static void playAgain() {
+        System.out.println(DisplayBoardCode.PLAYAGAIN.getMessage());
+        Console.readLine();
     }
 
     private static void resultCount(Count count) {
