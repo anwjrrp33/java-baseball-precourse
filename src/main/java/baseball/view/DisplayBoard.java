@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.code.DisplayBoardCode;
+import baseball.code.StatusCode;
 import baseball.model.Count;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -22,9 +23,9 @@ public class DisplayBoard {
         System.out.println(DisplayBoardCode.GAMEOVER.getMessage());
     }
 
-    public static void playAgain() {
+    public static boolean playAgain() {
         System.out.println(DisplayBoardCode.PLAYAGAIN.getMessage());
-        Console.readLine();
+        return restartCheck(Console.readLine());
     }
 
     private static void resultCount(Count count) {
@@ -40,5 +41,15 @@ public class DisplayBoard {
             return count + message;
         }
         return "";
+    }
+
+    private static boolean restartCheck(String status) {
+        if ("1".equals(status)) {
+            return false;
+        }
+        if ("2".equals(status)) {
+            return true;
+        }
+        throw new IllegalArgumentException(StatusCode.INPUT.getMessage());
     }
 }

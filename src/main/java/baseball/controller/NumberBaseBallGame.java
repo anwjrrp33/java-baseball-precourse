@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.code.StatusCode;
+import baseball.code.ValidationCode;
 import baseball.model.Count;
 import baseball.model.NumberBaseBall;
 import baseball.service.Signal;
@@ -18,20 +20,32 @@ public class NumberBaseBallGame {
                 answerNumberBaseBallGame.get(1) +
                 answerNumberBaseBallGame.get(2));
         while (!isGameOver) {
-            DisplayBoard.input();
-            NumberBaseBall inputNumberBaseBallGame = new NumberBaseBall(Console.readLine());
+            NumberBaseBall inputNumberBaseBallGame = inputBaseBall();
             Count count = Signal.gesture(answerNumberBaseBallGame, inputNumberBaseBallGame);
             DisplayBoard.count(count);
             isGameOver = isGameOver(count);
+            answerNumberBaseBallGame = isRestart(answerNumberBaseBallGame, count, isGameOver);
         }
-        DisplayBoard.playAgain();
+    }
+
+    private NumberBaseBall inputBaseBall() {
+        DisplayBoard.input();
+        return new NumberBaseBall(Console.readLine());
     }
 
     private boolean isGameOver(Count count) {
         if (count.getStrike() == 3) {
             DisplayBoard.gameOver();
-            return true;
+            return DisplayBoard.playAgain();
         }
         return false;
+    }
+
+    private NumberBaseBall isRestart(NumberBaseBall answerNumberBaseBallGame, Count count,
+                                            Boolean isGameOver) {
+        if (count.getStrike() == 3 && !isGameOver) {
+            return new NumberBaseBall(Generator.generate());
+        }
+        return answerNumberBaseBallGame;
     }
 }
