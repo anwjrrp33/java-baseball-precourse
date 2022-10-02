@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import baseball.code.StatusCode;
-import baseball.code.ValidationCode;
 import baseball.model.Count;
 import baseball.model.NumberBaseBall;
 import baseball.service.Signal;
@@ -15,10 +13,7 @@ public class NumberBaseBallGame {
 
     public void start() {
         NumberBaseBall answerNumberBaseBallGame = new NumberBaseBall(Generator.generate());
-        System.out.println("정답 : " +
-                answerNumberBaseBallGame.get(0) +
-                answerNumberBaseBallGame.get(1) +
-                answerNumberBaseBallGame.get(2));
+
         while (!isGameOver) {
             NumberBaseBall inputNumberBaseBallGame = inputBaseBall();
             Count count = Signal.gesture(answerNumberBaseBallGame, inputNumberBaseBallGame);
